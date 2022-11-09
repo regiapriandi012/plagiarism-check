@@ -7,8 +7,8 @@ link_output = []
 hasil_link = []
 for i in range(len(inputan)):
     query = '"' + inputan[i].strip().replace(".", "").replace('"', "'") + '"'
-    for j in range(len(list(search(query, tld="co.in", num=10, stop=10, pause=2)))):
+    for j in range(len(list(search(query, tld="com.sg", num=10, stop=10, pause=2)))):
         if i != j:
             continue
-        hasil_link.append(inputan[i] + " " + list(search(query, tld="co.in", num=10, stop=10, pause=2))[j])
+        hasil_link.append(list(search(query, tld="com.sg", num=10, stop=10, pause=2))[j])
 print(hasil_link)
