@@ -18,8 +18,12 @@ def plagiarism():
     hasil_plagiarism = []
     hasil_link = []
     hasil_persen = 0
-    f = open("word.txt", "r")
-    inputan_mentah = f.read()
+    inputan_mentah = ""
+    if request.method == 'POST':
+        inputan_mentah += request.form['text']
+    else:
+        f = open("word.txt", "r")
+        inputan_mentah += f.read()
     inputan = inputan_mentah.replace("\n", " ").split(". ")
     for i in range(len(inputan)):
         query = '"' + inputan[i].strip().replace(".", "").replace('"', "'") + '"'
@@ -33,7 +37,6 @@ def plagiarism():
     hasil_persen += (count_hasil / count) * 100
     for i in range(len(hasil_link)):
         link_output.append(hasil_link[i])
-
     return render_template("index.html", hasil_persen=hasil_persen, data=inputan, hasil_plagiarism=hasil_plagiarism, link_output=link_output, hasil_link=hasil_link)
 
 if __name__ == "__main__":
