@@ -10,5 +10,5 @@ for i in range(len(inputan)):
     for j in range(len(list(search(query, tld="com.sg", num=10, stop=10, pause=2)))):
         if i != j:
             continue
-        hasil_link.append(list(search(query, tld="com.sg", num=10, stop=10, pause=2))[j])
+        hasil_link.append(inputan[i] + " " + (search(query, tld="com.sg", num=10, stop=10, pause=2))[j])
 print(hasil_link)
