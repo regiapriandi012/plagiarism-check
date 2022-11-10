@@ -40,4 +40,4 @@ def plagiarism():
     return render_template("index.html", hasil_persen=hasil_persen, data=inputan, hasil_plagiarism=hasil_plagiarism, link_output=link_output, hasil_link=hasil_link)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run(host="0.0.0.0", debug=False)
