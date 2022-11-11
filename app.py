@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, make_response
+from flask import Flask, render_template, request, redirect, url_for
 from googlesearch import search
-import re
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'super secret key'
