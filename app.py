@@ -16,7 +16,6 @@ app.add_url_rule(
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1000 * 1000
 app.config['SECRET_KEY'] = 'super secret key'
 
-
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -53,6 +52,7 @@ def index():
 
 @app.route('/plagiarism/<name>', methods=['GET', 'POST'])
 def plagiarism(name):
+    domain = "co.id"
     link_output = []
     hasil_plagiarism = []
     hasil_link = []
@@ -61,7 +61,10 @@ def plagiarism(name):
     inputan = []
     filename = ""
     text = ""
-
+    hasil_plagiarism_final = []
+    hasil_link_final = []
+    link_blocked = ["id.linkedin.com", "linkedin.com", "youtube.com", "instagram.com", "facebook.com", "tokopedia.com",
+                    "twitter.com", "reddit.com", "bukalapak.com", "shopee.com", "blibli.com"]
     if request.method == 'POST':
         if request.form['text'] != '' and request.files['file'].filename == '':
             word = request.form['text']
@@ -103,35 +106,56 @@ def plagiarism(name):
             inputan += inputan_mentah.replace("\n", " ").split(". ")
             for i in range(len(inputan)):
                 query = '"' + inputan[i].strip().replace(".", "").replace('"', "'") + '"'
-                for j in range(len(list(search(query, tld="com", num=10, stop=10, pause=2)))):
+                for j in range(len(list(search(query, tld=domain, num=10, stop=10, pause=2)))):
                     if i != j:
                         continue
-                    if ('id.linkedin.com' or 'linkedin.com' or 'youtube.com' or 'instagram.com' or 'facebook.com' or 'tokopedia.com' or 'twitter.com' or 'reddit.com' or 'bukalapak.com' or 'shopee.com' or 'blibli.com') in list(search(query, tld="com", num=10, stop=10, pause=2))[j]:
-                        continue
                     hasil_plagiarism.append(inputan[i])
-                    hasil_link.append(list(search(query, tld="com", num=10, stop=10, pause=2))[j])
+                    hasil_link.append(list(search(query, tld=domain, num=10, stop=10, pause=2))[j])
+            for i in range(len(hasil_plagiarism)):
+                for j in range(len(hasil_link)):
+                    if i != j:
+                        continue
+                    while True:
+                        for k in range(len(link_blocked)):
+                            if link_blocked[k] in hasil_link[j]:
+                                break
+                        else:
+                            hasil_plagiarism_final.append(hasil_plagiarism[i])
+                            hasil_link_final.append(hasil_link[j])
+                            break
+                        break
             count = len(inputan)
-            count_hasil = len(hasil_link)
+            count_hasil = len(hasil_link_final)
             hasil_persen += (count_hasil / count) * 100
-            for i in range(len(hasil_link)):
-                link_output.append(hasil_link[i])
+            for i in range(len(hasil_link_final)):
+                link_output.append(hasil_link_final[i])
         else:
             inputan += text.replace("\n", " ").split(". ")
             for i in range(len(inputan)):
                 query = '"' + inputan[i].strip().replace(".", "").replace('"', "'") + '"'
-                for j in range(len(list(search(query, tld="com", num=10, stop=10, pause=2)))):
+                for j in range(len(list(search(query, tld=domain, num=10, stop=10, pause=2)))):
                     if i != j:
                         continue
-                    if ('id.linkedin.com' or 'linkedin.com' or 'youtube.com' or 'instagram.com' or 'facebook.com' or 'tokopedia.com' or 'twitter.com' or 'reddit.com' or 'bukalapak.com' or 'shopee.com' or 'blibli.com') in list(search(query, tld="com", num=10, stop=10, pause=2))[j]:
-                        continue
                     hasil_plagiarism.append(inputan[i])
-                    hasil_link.append(list(search(query, tld="com", num=10, stop=10, pause=2))[j])
+                    hasil_link.append(list(search(query, tld=domain, num=10, stop=10, pause=2))[j])
+            for i in range(len(hasil_plagiarism)):
+                for j in range(len(hasil_link)):
+                    if i != j:
+                        continue
+                    while True:
+                        for k in range(len(link_blocked)):
+                            if link_blocked[k] in hasil_link[j]:
+                                break
+                        else:
+                            hasil_plagiarism_final.append(hasil_plagiarism[i])
+                            hasil_link_final.append(hasil_link[j])
+                            break
+                        break
             count = len(inputan)
-            count_hasil = len(hasil_link)
+            count_hasil = len(hasil_link_final)
             hasil_persen += (count_hasil / count) * 100
-            for i in range(len(hasil_link)):
-                link_output.append(hasil_link[i])
-
+            for i in range(len(hasil_link_final)):
+                link_output.append(hasil_link_final[i])
     else:
         if name == "word":
             if request.method == 'POST':
@@ -142,18 +166,29 @@ def plagiarism(name):
             inputan += inputan_mentah.replace("\n", " ").split(". ")
             for i in range(len(inputan)):
                 query = '"' + inputan[i].strip().replace(".", "").replace('"', "'") + '"'
-                for j in range(len(list(search(query, tld="com", num=10, stop=10, pause=2)))):
+                for j in range(len(list(search(query, tld=domain, num=10, stop=10, pause=2)))):
                     if i != j:
                         continue
-                    if ('id.linkedin.com' or 'linkedin.com' or 'youtube.com' or 'instagram.com' or 'facebook.com' or 'tokopedia.com' or 'twitter.com' or 'reddit.com' or 'bukalapak.com' or 'shopee.com' or 'blibli.com') in list(search(query, tld="com", num=10, stop=10, pause=2))[j]:
-                        continue
                     hasil_plagiarism.append(inputan[i])
-                    hasil_link.append(list(search(query, tld="com", num=10, stop=10, pause=2))[j])
+                    hasil_link.append(list(search(query, tld=domain, num=10, stop=10, pause=2))[j])
+            for i in range(len(hasil_plagiarism)):
+                for j in range(len(hasil_link)):
+                    if i != j:
+                        continue
+                    while True:
+                        for k in range(len(link_blocked)):
+                            if link_blocked[k] in hasil_link[j]:
+                                break
+                        else:
+                            hasil_plagiarism_final.append(hasil_plagiarism[i])
+                            hasil_link_final.append(hasil_link[j])
+                            break
+                        break
             count = len(inputan)
-            count_hasil = len(hasil_link)
+            count_hasil = len(hasil_link_final)
             hasil_persen += (count_hasil / count) * 100
-            for i in range(len(hasil_link)):
-                link_output.append(hasil_link[i])
+            for i in range(len(hasil_link_final)):
+                link_output.append(hasil_link_final[i])
         else:
             pdfFileObj = open('uploads/{}'.format(name), 'rb')
             pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
@@ -167,22 +202,31 @@ def plagiarism(name):
             inputan += text.replace("\n", " ").split(". ")
             for i in range(len(inputan)):
                 query = '"' + inputan[i].strip().replace(".", "").replace('"', "'") + '"'
-                for j in range(len(list(search(query, tld="com", num=10, stop=10, pause=2)))):
+                for j in range(len(list(search(query, tld=domain, num=10, stop=10, pause=2)))):
                     if i != j:
                         continue
-                    if ('id.linkedin.com' or 'linkedin.com' or 'youtube.com' or 'instagram.com' or 'facebook.com' or 'tokopedia.com' or 'twitter.com' or 'reddit.com' or 'bukalapak.com' or 'shopee.com' or 'blibli.com') in list(search(query, tld="com", num=10, stop=10, pause=2))[j]:
-                        continue
                     hasil_plagiarism.append(inputan[i])
-                    hasil_link.append(list(search(query, tld="com", num=10, stop=10, pause=2))[j])
+                    hasil_link.append(list(search(query, tld=domain, num=10, stop=10, pause=2))[j])
+            for i in range(len(hasil_plagiarism)):
+                for j in range(len(hasil_link)):
+                    if i != j:
+                        continue
+                    while True:
+                        for k in range(len(link_blocked)):
+                            if link_blocked[k] in hasil_link[j]:
+                                break
+                        else:
+                            hasil_plagiarism_final.append(hasil_plagiarism[i])
+                            hasil_link_final.append(hasil_link[j])
+                            break
+                        break
             count = len(inputan)
-            count_hasil = len(hasil_link)
+            count_hasil = len(hasil_link_final)
             hasil_persen += (count_hasil / count) * 100
-            for i in range(len(hasil_link)):
-                link_output.append(hasil_link[i])
-
-    return render_template("index.html", hasil_persen=hasil_persen, data=inputan, hasil_plagiarism=hasil_plagiarism,
-                           link_output=link_output, hasil_link=hasil_link)
-
+            for i in range(len(hasil_link_final)):
+                link_output.append(hasil_link_final[i])
+    return render_template("index.html", hasil_persen=hasil_persen, data=inputan, hasil_plagiarism=hasil_plagiarism_final,
+                           link_output=link_output, hasil_link=hasil_link_final)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=False)
