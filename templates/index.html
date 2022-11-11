@@ -6,24 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plagiarsm Checker</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand text-light" href="#">Plagiarism Checker</a>
+          <a class="navbar-brand text-light" href="index.html">Plagiarism Checker</a>
         </div>
       </nav>
       <h1 align="center" style="margin-top: 20px; margin-bottom: 50px;"> Plagiarsm Checker</h1>
       <form method="post">
         <div class="form-group">
-            <label class="d-flex justify-content-start" style="margin-left: 165px;">Check Plagiarsm</label>
-            <div class="d-flex justify-content-center">
-            <textarea name="text" class="form-control rounded-top w-75 shadow bg-white rounded" id="exampleFormControlTextarea1" rows="5"></textarea>
-            </div>
+          <div class="d-flex justify-content-center">
+            <textarea name="text" class="form-control rounded-top shadow bg-white rounded" id="exampleFormControlTextarea1"
+              rows="10" placeholder="Input your text here..." style="width: 600px;"></textarea>
+          </div>
         </div>
         </div>
-        <input class="btn btn-primary text-center float-end" type="submit" value="submit" style="margin-right: 170px; margin-top: 10px">
       </form>
+      <div class="d-flex justify-content-center">
+        <input class="form-control form-control-md h-25 d-flex justify-content-center shadow bg-white" id="formFileLg" type="file" style="border-radius: 10px; width: 270px; margin-top: 20px; margin-bottom: 20px;">
+      </div>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-dark" style="border-radius: 15px; height: 45px;"><i class="bi bi-search"></i> Check Plagiarism</button>
+      </div>
       <div id="hasil" style="margin-top: 80px;">
         <h1 align="center">Result</h1>
         <div class="container">
