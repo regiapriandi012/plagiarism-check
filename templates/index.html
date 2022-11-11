@@ -15,7 +15,7 @@
         </div>
       </nav>
       <h1 align="center" style="margin-top: 20px; margin-bottom: 50px;"> Plagiarsm Checker</h1>
-      <form method="post">
+      <form method=post enctype=multipart/form-data>
         <div class="form-group">
           <div class="d-flex justify-content-center">
             <textarea name="text" class="form-control rounded-top shadow bg-white rounded" id="exampleFormControlTextarea1"
@@ -24,7 +24,7 @@
         </div>
         </div>
       <div class="d-flex justify-content-center">
-        <input class="form-control form-control-md h-25 d-flex justify-content-center shadow bg-white" id="formFileLg" type="file" style="border-radius: 10px; width: 270px; margin-top: 20px; margin-bottom: 20px;">
+        <input name="file" class="form-control form-control-md h-25 d-flex justify-content-center shadow bg-white" id="formFileLg" type="file" style="border-radius: 10px; width: 270px; margin-top: 20px; margin-bottom: 20px;">
       </div>
       <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-dark" style="border-radius: 15px; height: 45px;"><i class="bi bi-search"></i> Check Plagiarism</button>
@@ -32,7 +32,7 @@
     </form>
       <div id="hasil" style="margin-top: 80px;">
         <h1 align="center">Result</h1>
-        <div class="container">
+        <div style="padding-bottom: 30px" class="container">
             <div class="col d-flex justify-content-center">
                 <div class="p-3 border bg-dark text-light text-center" style="width: 180px; border-radius: 15px;">Plagiarsm : {{ hasil_persen }}</div>
             </div>
