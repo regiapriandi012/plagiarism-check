@@ -1,6 +1,7 @@
 ![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/codeql.yml/badge.svg)
 ![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/dependency-review.yml/badge.svg)
 ![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/docker-image.yml/badge.svg)
+![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/docker-publish.yml/badge.svg)
 
 # Plagiarism Checker Flask
 Plagiarism checker Flask application is an application that can check plagiarism of a document, where the algorithm of this application is described in the following flowchart form.
