@@ -44,4 +44,4 @@ $ cd plagiarism-checker-flask
 $ cd plagiarism-checker-flask
 $ source ./venv/bin/activate
 $ flask run
-
+```
