@@ -1,5 +1,7 @@
 ![](https://img.shields.io/github/license/regiapriandi012/plagiarism-checker-flask)
 ![](https://img.shields.io/github/v/release/regiapriandi012/plagiarism-checker-flask)
+![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/main.yml/badge.svg)
+![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/python-app.yml/badge.svg)
 ![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/codeql.yml/badge.svg)
 ![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/dependency-review.yml/badge.svg)
 ![](https://github.com/regiapriandi012/plagiarism-checker-flask/actions/workflows/docker-image.yml/badge.svg)
