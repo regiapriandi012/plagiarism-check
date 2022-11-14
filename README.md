@@ -46,6 +46,8 @@ $ cd plagiarism-checker-flask
 ## Run the App
 ```
 $ cd plagiarism-checker-flask
+$ python3 -m venv venv
 $ source ./venv/bin/activate
+$ pip install -r requirements.txt
 $ flask run
 ```
