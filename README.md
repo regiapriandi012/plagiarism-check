@@ -29,8 +29,9 @@ zipp==3.10.0
 ```
 
 ## Algorithm
-<img width="945" alt="image" src="https://user-images.githubusercontent.com/69528812/201469781-c88c7c93-6439-4d0a-b6ec-7ccae230d77c.png">
-
+<p align="center">
+<img width="604" alt="image" src="https://user-images.githubusercontent.com/69528812/204430811-de3edf9a-e384-4979-9394-adee8f182214.png">
+</p>
 
 ## How to Use the App
   - #### Insert a Document or Write a Text
